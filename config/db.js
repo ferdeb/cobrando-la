@@ -1,3 +1,5 @@
+// Conector hacia PostgreSQL (Local)
+
 const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize('cobrandola', 'feradmin', 'feradmin123', {

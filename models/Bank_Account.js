@@ -7,8 +7,11 @@ const Bank_Account = sequelize.define('bank_account', {
     type: DataTypes.TEXT,
     primaryKey: true,
     allowNull: false,
-    unique: true   
-   } ,
+    unique: true,
+    validate: {
+        is: /^[0-9]{10}$/ // Validacion de 0 al 10
+      }
+   },
    bank_name: {
     type: DataTypes.TEXT
    },
