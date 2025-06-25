@@ -1,5 +1,4 @@
 const { DataTypes } = require('sequelize');
-
 const sequelize = require('../config/db');
 
 const Bank_Account = sequelize.define('bank_account', {
@@ -24,7 +23,11 @@ const Bank_Account = sequelize.define('bank_account', {
   },
   bank_account_number: {
     type: DataTypes.TEXT
-  }
+  },  
+},
+ {
+  tableName: 'bank_account',   // coincide con tu tabla en la base de datos :contentReference[oaicite:4]{index=4}
+  timestamps: false       // desactiva createdAt y updatedAt :contentReference[oaicite:5]{index=5}
 });
 
 module.exports = Bank_Account;

@@ -3,36 +3,37 @@ const { Bank_Account } = require('../models');
 // Crear - CREATE
 
 exports.formCrear = (req, res) => {
-    res.render(bank_accounts/crear)
-}
+    res.render('bank_accounts/crear');
+};
 
 exports.crear = async (req, res) => {
-    res.render(bank_accounts)
-}
+    await Bank_Account.create(req.body);
+    res.redirect('/bank_accounts');
+};
 
 // Listar - SELECT - Read
 
 exports.listar = async (req, res) => {
-    const bank_accounts = await Bank_Account.findAll;
+    const bank_accounts = await Bank_Account.findAll(); // Si no hay relacion con otra tabla como debemos poner ();
     res.render('bank_accounts/index', {
         bank_accounts,
         error: req.query.error
-    })
-}
+    });
+};
 
 // Actualizar - UPDATE
 
 exports.formEditar = async (req, res) => {
     const bank_account = await Bank_Account.findByPk(req.params.id);
-    res.render('bank_accounts/editar', { cliente });
-}
+    res.render('bank_accounts/editar', { bank_account });
+};
 
 exports.editar = async (req, res) => {
     await Bank_Account.update(req.body, {
         where: {phone_number: req.params.id}
     });
     res.redirect('/bank_accounts') // Preguntarle al chalan si esto redirige automaticamente al ser completada la op. intuyo que si xd
-}
+};
 
 // Eliminar - DELETE
 
@@ -48,4 +49,4 @@ exports.eliminar = async (req, res) => {
             res.redirect('/bank_accounts?errno=desconocido')
         }
     }
-}
+};
