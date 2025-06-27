@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 const ctrl = require('../controllers/bank_accountController');
 
-router.get('/', ctrl.listar);
-router.get('/ver/:phone_number', ctrl.verUno);
-router.get('/crear', ctrl.formCrear);
-router.post('/crear', ctrl.crear);
-router.get('/editar/:id', ctrl.formEditar);
-router.post('/editar/:id', ctrl.editar);
-router.get('/eliminar/:id', ctrl.eliminar);
+router.get('/', ctrl.list);
+router.get('/view/:phone_number', ctrl.view);
+router.get('/create', ctrl.formCreate);
+router.post('/create', ctrl.create);
+router.get('/edit/:id', ctrl.formEdit);
+router.post('/edit/:id', ctrl.edit);
+router.get('/delete/:id', ctrl.delete);
 
 module.exports = router;
