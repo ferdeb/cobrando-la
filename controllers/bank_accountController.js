@@ -14,12 +14,30 @@ exports.crear = async (req, res) => {
 // Listar - SELECT - Read
 
 exports.listar = async (req, res) => {
-    const bank_accounts = await Bank_Account.findAll(); // Si no hay relacion con otra tabla como debemos poner ();
+    const bank_accounts = await Bank_Account.findAll();
     res.render('bank_accounts/index', {
-        bank_accounts,
-        error: req.query.error
+      bank_accounts,
+      error: req.query.error
     });
-};
+  };
+  
+  exports.verUno = async (req, res) => {
+    const phone = req.params.phone_number;
+    try {
+      const bank_accounts = await Bank_Account.findOne({
+        where: { phone_number: phone }
+      });
+      if (!bank_accounts) {
+        return res.redirect('/bank_accounts?error=Cuenta no encontrada');
+      }
+      res.render('bank_accounts/show', {
+        bank_accounts
+      });
+    } catch (err) {
+      console.error(err);
+      res.redirect('/bank_accounts?error=Error interno');
+    }
+  };
 
 // Actualizar - UPDATE
 
