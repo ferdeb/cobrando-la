@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const ctrl = require('../controllers/bank_accountController');
+const ctrl = require('../controllers/bank_account.controller');
 
 router.get('/', ctrl.list);
-router.get('/view/:phone_number', ctrl.view);
+router.get('/list/:phone_number', ctrl.viewOne);
 router.get('/create', ctrl.formCreate);
 router.post('/create', ctrl.create);
 router.get('/edit/:id', ctrl.formEdit);

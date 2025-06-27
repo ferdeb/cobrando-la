@@ -21,7 +21,7 @@ exports.list = async (req, res) => {
     });
   };
   
-  exports.view = async (req, res) => {
+exports.viewOne = async (req, res) => {
     const phone = req.params.phone_number;
     try {
       const bank_accounts = await Bank_Account.findOne({
