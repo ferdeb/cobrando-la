@@ -9,3 +9,7 @@ const sequelize = new Sequelize('cobrandola', 'feradmin', 'feradmin123', {
 });
 
 module.exports = sequelize;
+
+// TO-DO
+
+// Implementar conexion a RDS y configurar todo con DOTENV

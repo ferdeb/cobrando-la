@@ -14,7 +14,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-
 // Activar rutas
 
 app.use('/bank_accounts', bank_accountRoutes);
